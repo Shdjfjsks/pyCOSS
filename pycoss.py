@@ -130,8 +130,8 @@ def create_order(symbol, side, order_type, size, price=None):
     :param symbol: str
     :param side: str UPPER
     :param order_type: str
-    :param size: float
-    :param price: float
+    :param size: int|float
+    :param price: int|float
     :return: JSON
     """
     payload = json.dumps({"order_symbol": symbol,
