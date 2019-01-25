@@ -17,6 +17,9 @@ import requests
 API_PUBLIC = ""
 API_SECRET = b""
 s = requests.Session()
+order_headers = {"Content-Type": "application/json",
+                 "X-Requested-With": "XMLHttpRequest",
+                 "Authorization": API_PUBLIC, "Signature": None}
 
 
 def sign(payload):
@@ -36,8 +39,7 @@ def get_balances():
     :return: JSON
     """
     payload = urlencode({"timestamp": int(time.time() * 1000)})
-    order_headers = {"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest",
-                     "Authorization": API_PUBLIC, "Signature": sign(payload=payload)}
+    order_headers["Signature"] = sign(payload=payload)
     return s.get("https://trade.coss.io/c/api/v1/account/balances", headers=order_headers, params=payload).json()
 
 
@@ -48,8 +50,7 @@ def get_account_details():
     :return: JSON
     """
     payload = urlencode({"timestamp": int(time.time() * 1000)})
-    order_headers = {"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest",
-                     "Authorization": API_PUBLIC, "Signature": sign(payload=payload)}
+    order_headers["Signature"] = sign(payload=payload)
     return s.get("https://trade.coss.io/c/api/v1/account/details", headers=order_headers, params=payload).json()
 
 
@@ -140,8 +141,7 @@ def create_order(symbol, side, order_type, size, price=None):
                           "order_size": size,
                           "order_price": price,
                           "timestamp": int(time.time()) * 1000}, separators=(",", ":"))
-    order_headers = {"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest",
-                     "Authorization": API_PUBLIC, "Signature": sign(payload=payload)}
+    order_headers["Signature"] = sign(payload=payload)
     return s.post("https://trade.coss.io/c/api/v1/order/add/", headers=order_headers, data=payload).json()
 
 
@@ -164,8 +164,7 @@ def get_open_orders(symbol, limit=10, page=0):
                           "limit": limit,
                           "page": page,
                           "timestamp": int(time.time() * 1000)}, separators=(",", ":"))
-    order_headers = {"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest",
-                     "Authorization": API_PUBLIC, "Signature": sign(payload=payload)}
+    order_headers["Signature"] = sign(payload=payload)
     return s.post("https://trade.coss.io/c/api/v1/order/list/open", headers=order_headers, data=payload).json()
 
 
@@ -181,8 +180,7 @@ def get_completed_orders(symbol, limit=10, page=0):
                           "limit": limit,
                           "page": page,
                           "timestamp": int(time.time() * 1000)}, separators=(",", ":"))
-    order_headers = {"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest",
-                     "Authorization": API_PUBLIC, "Signature": sign(payload=payload)}
+    order_headers["Signature"] = sign(payload=payload)
     return s.post("https://trade.coss.io/c/api/v1/order/list/completed", headers=order_headers, data=payload).json()
 
 
@@ -205,8 +203,7 @@ def get_all_orders(symbol, from_id=None, limit=50):
                           "limit": limit,
                           "from_id": from_id,
                           "timestamp": int(time.time() * 1000)}, separators=(",", ":"))
-    order_headers = {"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest",
-                     "Authorization": API_PUBLIC, "Signature": sign(payload=payload)}
+    order_headers["Signature"] = sign(payload=payload)
     return s.post("https://trade.coss.io/c/api/v1/order/list/all", headers=order_headers, data=payload).json()
 
 
@@ -224,8 +221,7 @@ def cancel_order(order_id, order_symbol):
     payload = json.dumps({"order_id": order_id,
                           "order_symbol": order_symbol,
                           "timestamp": int(time.time() * 1000)}, separators=(",", ":"))
-    order_headers = {"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest",
-                     "Authorization": API_PUBLIC, "Signature": sign(payload=payload)}
+    order_headers["Signature"] = sign(payload=payload)
     return s.delete("https://trade.coss.io/c/api/v1/order/cancel", headers=order_headers, data=payload).json()
 
 
@@ -244,8 +240,7 @@ def get_order_details(order_id):
     """
     payload = json.dumps({"order_id": order_id,
                           "timestamp": int(time.time() * 1000)}, separators=(",", ":"))
-    order_headers = {"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest",
-                     "Authorization": API_PUBLIC, "Signature": sign(payload=payload)}
+    order_headers["Signature"] = sign(payload=payload)
     return s.post("https://trade.coss.io/c/api/v1/order/details", headers=order_headers, data=payload).json()
 
 
@@ -260,8 +255,7 @@ def get_trade_details(order_id):
     """
     payload = json.dumps({"order_id": order_id,
                           "timestamp": int(time.time() * 1000)}, separators=(",", ":"))
-    order_headers = {"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest",
-                     "Authorization": API_PUBLIC, "Signature": sign(payload=payload)}
+    order_headers["Signature"] = sign(payload=payload)
     return s.post("https://trade.coss.io/c/api/v1/order/trade-detail", headers=order_headers, data=payload).json()
 
 
