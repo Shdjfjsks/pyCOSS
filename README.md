@@ -30,4 +30,4 @@ Secondly: to use this bot, you will need to have python-binance installed. You c
 pip install python-binance
 ```
 
-The bot file itself includes verbose and specific instructions on how to use it. Remember: not liable.
+The bot file itself includes verbose and specific instructions on how to use it. Remember: not liable. Importantly: this bot is almost certainly easily exploitable by bad actors. Be careful.
