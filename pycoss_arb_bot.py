@@ -210,7 +210,6 @@ def arbitrage_bot(symbol, slippage_protection=True, threshold=0.1):
 #   time.sleep(10)
 
 # Multiple pairs with and without slippage protection. This fills up the order books.
-# The more pairs you call in sequence, the less likely this becomes. IT IS STILL POSSIBLE, HOWEVER.
 # while True:
 #   print(arbitrage_bot("ETH_BTC"))
 #   time.sleep(30)
