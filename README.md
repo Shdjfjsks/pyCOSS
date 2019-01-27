@@ -18,3 +18,5 @@ balances = client.get_balances()
 eth_btc = client.get_order_book('ETH_BTC')
 order = client.create_order('ETH_BTC', 'BUY', 'limit', 0.5, 0.035)
 ```
+
+All functions return the JSON response from the API call.
