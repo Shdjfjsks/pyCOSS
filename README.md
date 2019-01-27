@@ -10,3 +10,11 @@ client = PyCOSSClient(api_public='your_public_key', api_secret='your_secret_key'
 ```
 
 You can then call all methods associated with the COSS web API.
+
+For example:
+
+```
+balances = client.get_balances()
+eth_btc = client.get_order_book('ETH_BTC')
+order = client.create_order('ETH_BTC', 'BUY', 'limit', 0.5, 0.035)
+```
