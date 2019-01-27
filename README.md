@@ -20,3 +20,14 @@ order = client.create_order('ETH_BTC', 'BUY', 'limit', 0.5, 0.035)
 ```
 
 All functions return the JSON response from the API call.
+
+
+## The pyCOSS Arbitrage Bot
+
+Firstly: __ALL trading is at your own risk when using this script__. _It is intended for educational purposes only_.
+Secondly: to use this bot, you will need to have python-binance installed. You can get it here: https://github.com/sammchardy/python-binance . You can also install it directly via:
+```
+pip install python-binance
+```
+
+The bot file itself includes verbose and specific instructions on how to use it. Remember: not liable.
