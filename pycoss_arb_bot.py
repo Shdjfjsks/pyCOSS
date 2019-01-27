@@ -6,6 +6,7 @@ import time
 #                               [ READ THIS. SERIOUSLY. ]
 # [  WARNING  ] [  WARNING  ] [  WARNING  ] [  WARNING  ] [  WARNING  ] [  WARNING  ]
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# THIS IS AN EXAMPLE.
 # USE THIS SCRIPT AT YOUR OWN RISK.
 # USAGE INSTRUCTIONS, A CHECKLIST, AND FURTHER WARNINGS ARE AT THE BOTTOM OF THE SCRIPT.
 # YOU NEED PYTHON-BINANCE INSTALLED FOR THIS TO WORK: https://github.com/sammchardy/python-binance
