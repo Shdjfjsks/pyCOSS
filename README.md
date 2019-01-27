@@ -1,6 +1,6 @@
 ## Overview
 
-pyCOSS clears up COSS.io's exchange API to make it easier and more intuitive for developers to develop trading bots on the exchange. It is also intended to allow for developers to use these functions as a template for their own implementations of the API in other languages.
+pyCOSS clears up COSS.io's exchange API to make it easier and more intuitive for developers to develop trading bots. It is also intended to allow for developers to use these functions as a template for their own implementations of the API in other languages.
 
 To instantiate the client:
 ```
