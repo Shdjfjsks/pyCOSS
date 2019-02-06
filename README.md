@@ -24,7 +24,7 @@ All functions return the JSON response from the API call.
 
 ## The pyCOSS Arbitrage Bot
 
-Firstly: __ALL trading is at your own risk when using this script__. _It is intended for educational purposes only_. The bot performs pair arbitrage via COSS and Binance. If it detects a positive ROI percentage in either direction over a user-specified threshold, it executes simultaenous buy and sell orders on both exchanges, netting the difference as profit.
+Firstly: __ALL trading is at your own risk when using this script__. _It is intended for educational purposes only_. The bot performs pair arbitrage via COSS and Binance. If it detects a positive ROI percentage in either direction over a user-specified threshold, it executes simultaneous buy and sell orders on both exchanges, netting the difference as profit.
 
 Secondly: to use this bot, you will need to have python-binance installed. You can get it here: https://github.com/sammchardy/python-binance . You can also install it directly via:
 ```
