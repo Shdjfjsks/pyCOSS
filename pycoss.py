@@ -40,6 +40,44 @@ class PyCOSSClient(object):
         """
         return hmac.new(self.API_SECRET, payload.encode("utf8"), hashlib.sha256).hexdigest()
 
+    def get_depth_websocket(self, pair):
+        """
+        Connects to an order book websocket for a given trading pair.
+        
+        Arguments:
+            pair {str} -- The trading pair to stream depth using a websocket
+                        e.g. "ETH_BTC"
+        """
+        ws = create_connection(f"wss://engine.coss.io/ws/v1/dp/{pair}")
+        print(f"Running websocket on {pair}...")
+        while True:
+            result = ws.recv()
+            result = json.loads(result)
+            if "Connected sucessfully" not in str(result):
+                if result["a"] != []:
+                    self.current_ask_price = float(result["a"][0][0])
+                elif result["b"] != []:
+                    self.current_bid_price = float(result["b"][0][0])
+
+    def get_trade_websocket(self, pair):
+        """
+        Connects to an order book websocket for a given trading pair.
+        
+        Arguments:
+            pair {str} -- The trading pair to stream depth using a websocket
+                        e.g. "ETH_BTC"
+        """
+        ws = create_connection(f"wss://engine.coss.io/ws/v1/ht/{pair}")
+        print(f"Running websocket on {pair}...")
+        while True:
+            result = ws.recv()
+            result = json.loads(result)
+            if "Connected sucessfully" not in str(result):
+                if result["a"] != []:
+                    self.current_ask_price = float(result["a"][0][0])
+                elif result["b"] != []:
+                    self.current_bid_price = float(result["b"][0][0])
+
     def get_balances(self):
         """
         Returns all of the coin balances in your account. 
